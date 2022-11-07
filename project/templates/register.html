@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+    <h3 class="title sign-up-title">Sign Up</h3>
+    <div class="box">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
+        <form method="POST" action="/register">
+            <!-- First Name -->
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="first-name" placeholder="First Name" autofocus="">
+                </div>
+            </div>
+
+            <!-- Last Name -->
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="last-name" placeholder="Last Name" autofocus="">
+                </div>
+            </div>
+
+            <!-- Street Address -->
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="street-address" placeholder="Street Address" autofocus="">
+                </div>
+            </div>
+
+            <!-- City -->
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="city" placeholder="City" autofocus="">
+                </div>
+            </div>
+
+            <!-- State -->
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="state" placeholder="State" autofocus="">
+                </div>
+            </div>
+
+            <!-- Zip Code -->
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="zip-code" placeholder="Zip Code" autofocus="">
+                </div>
+            </div>
+
+            <!-- Country -->
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="country" placeholder="Country" autofocus="">
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="email" name="email" placeholder="Email" autofocus="">
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="password" name="password" placeholder="Password" autofocus="">
+                </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="password" name="confirm-password" placeholder="Confirm Password" autofocus="">
+                </div>
+            </div>
+
+            <!-- Account Type -->
+            <div class="field">
+                <div class="control">
+                    <select class="input is-large"  name="account-type"  autofocus="">
+                        <option value="donor">Donor</option>
+                        <option value="recipient">Recipient</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="button is-block is-info is-large is-fullwidth" name="sign-up">Sign Up</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
