@@ -2,6 +2,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from project import dbCreds
 import pymysql
+from flask_login import LoginManager
+from project.models import User
 
 pymysql.install_as_MySQLdb()
 
@@ -19,6 +21,13 @@ def create_app():
         'SQLALCHEMY_DATABASE_URI'] = f'mysql://{dbCreds.user}:{dbCreds.password}@{dbCreds.host}/{dbCreds.database}'
 
     db.init_app(app)
+
+    login_manager = LoginManager()
+    login_manager.login_view = 'auth.login'
+    login_manager.init_app(app)
+
+    def load_user(user_id):
+        return User.query.get(int(user_id))
 
     # blueprint for auth routes in our app
     from .auth import auth as auth_blueprint

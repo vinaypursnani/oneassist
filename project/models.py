@@ -1,7 +1,8 @@
 from project import db
+from flask_login import UserMixin
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)  # primary keys are required by SQLAlchemy
     first_name = db.Column(db.String(100))
     last_name = db.Column(db.String(100))
